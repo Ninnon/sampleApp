@@ -1,0 +1,17 @@
+<div *ngIf="vm$ | async as vm">
+  <p>Question: {{vm.currentQuestionIndex + 1}} of {{vm.questions.length}}</p>
+  <h1>{{vm.currentQuestion.question}}</h1>
+  <ul>
+    <li #listItems *ngFor="let options of vm.currentQuestion.options">
+      <input id="{{options.option}}" [formControl]="answerControl" value="{{options.option}}" type="radio" name="answer">
+      <label for="{{options.option}}">{{options.text}}</label>
+    </li>
+  </ul>
+  <div>
+    <button (click)="submitAnswer()">Submit answer</button>
+    <button (click)="nextQuestion()" *ngIf="vm.currentQuestionIndex + 1 !== (questions$ | async).length">Next question</button>
+    <button (click)="showFinalResults()" *ngIf="vm.allQuestionsCompleted">See final results</button>
+  </div>
+  <h1 class="correct" *ngIf="vm.isCorrectAnswer">Correct!</h1>
+  <h1 class="incorrect" *ngIf="vm.answerSubmitted && !vm.isCorrectAnswer">Incorrect!</h1>
+</div>

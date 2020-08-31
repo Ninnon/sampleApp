@@ -1,0 +1,7 @@
+<h1>{{question.question}}</h1>
+<ul>
+  <li *ngFor="let options of question.options">
+    <input id="{{options.option}}" [formControl]="control" value="{{options.option}}" type="radio" name="answer">
+    <label class="ml-3" for="{{options.option}}">{{options.text}}</label>
+  </li>
+</ul>

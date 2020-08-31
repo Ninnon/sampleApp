@@ -1,10 +1,22 @@
 <app-header></app-header>
-<div *ngIf="vm$ | async as vm">
-  <app-questions *ngIf="!vm.allQuestionsCompleted"></app-questions>
-  <app-results *ngIf="vm.allQuestionsCompleted"></app-results>
+<app-jumbotron></app-jumbotron>
+<div *ngIf="vm$ | async as vm" class="container">
+  <div *ngIf="!vm.showQuestionResults">
+  <p>Question: {{vm.currentQuestionIndex + 1}} of {{vm.questions.length}}</p>
+    <app-question [question]="vm.currentQuestion" [control]="formControl" (onAnswerSubmitted)="submitAnswer()"></app-question>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="submitAnswer()" [disabled]="!vm.inputHasCurrentValue">Submit answer</button>
+      <button type="button" class="btn btn-secondary ml-3" (click)="nextQuestion()" *ngIf="vm.answerSubmitted && !vm.allQuestionsCompleted">Next question</button>
+      <div class="mt-3">
+        <h2 class="correct" *ngIf="vm.isCorrectAnswer">Correct!</h2>
+        <h2 class="incorrect" *ngIf="vm.answerSubmitted && !vm.isCorrectAnswer">Incorrect!</h2>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3" *ngIf="vm.allQuestionsCompleted && !vm.showQuestionResults">
+    <hr>
+    <h2>You have completed the trivia quiz! Click below to view your final score!</h2>
+    <button *ngIf="vm.allQuestionsCompleted && !vm.showQuestionResults" type="button" class="btn btn-info mt-3" (click)="showFinalResults()">See Final Results</button>
+  </div>
+  <app-results *ngIf="vm.allQuestionsCompleted && vm.showQuestionResults"></app-results>
 </div>
-<!-- <app-questions></app-questions>
-
-<ng-container *ngIf="allQuestionsCompleted$ | async as allQuestionsCompleted">
-  <app-results *ngIf="allQuestionsCompleted"></app-results>
-</ng-container> -->

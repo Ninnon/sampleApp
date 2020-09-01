@@ -17,7 +17,7 @@ export class QuizComponent implements OnDestroy {
   public nextQuestionTimer$: Subscription = this.questionService.answerSubmitted$.pipe(
     withLatestFrom(this.questionService.currentQuestionIndex$, this.questionService.questions$),
     filter((([answerSubmitted]) => answerSubmitted)),
-    delay(2500),
+    delay(2700),
     tap(() => {
       this.nextQuestion();
       this.formControl.enable();

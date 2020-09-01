@@ -1,0 +1,27 @@
+<div *ngIf="vm$ | async as vm" class="container">
+  <div class="quiz-container"*ngIf="!vm.showResults">
+        <span>Question: <span class="font-weight-bold">{{vm.currentQuestionIndex + 1}}</span> of {{vm.questions.length}}</span>
+        <app-timer></app-timer>
+    <app-question [question]="vm.currentQuestion" [control]="formControl" (onAnswerSubmitted)="submitAnswer()"></app-question>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="submitAnswer()" [disabled]="!vm.inputHasCurrentValue">Submit answer</button>
+      <div class="mt-3">
+        <h2 class="correct" *ngIf="vm.isCorrectAnswer">Congratulations, that is correct!</h2>
+        <div *ngIf="vm.answerSubmitted && !vm.isCorrectAnswer">
+          <h2 class="incorrect" *ngIf="vm.timerExpired; else incorrectAnswer">Time is up!</h2>
+          <ng-template #incorrectAnswer>
+            <h2 class="incorrect">I'm sorry, that is incorrect!</h2>
+          </ng-template>
+          <h4>Correct answer: {{vm.correctAnswerText}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3" *ngIf="vm.allQuestionsCompleted && !vm.showResults">
+    <hr>
+    <h2>You have completed the trivia quiz! Click below to view your final score!</h2>
+    <button *ngIf="vm.allQuestionsCompleted && !vm.showResults" type="button" class="btn btn-info mt-3" (click)="showFinalResults()">See Final Results</button>
+    <hr>
+  </div>
+  <app-results *ngIf="vm.allQuestionsCompleted && vm.showResults"></app-results>
+</div>

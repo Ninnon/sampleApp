@@ -1,0 +1,11 @@
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+
+.quiz-container {
+  position: relative;
+}

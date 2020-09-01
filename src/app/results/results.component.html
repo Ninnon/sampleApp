@@ -1,8 +1,9 @@
 <h1>FINAL SCORE:</h1>
 <hr>
 <div *ngIf="vm$ | async as vm">
-  <h2>{{vm.totalQuestionsCorrect}} out of {{vm.totalQuestions}}</h2>
-  <h3 [ngClass]="vm.hasGoodScore ? 'green' : 'red'">{{vm.percentCorrect | number:'1.0-0'}}%</h3>
+  <h2># of correct answers: {{vm.totalQuestionsCorrect}}</h2>
+  <h2># of incorrect answers: {{vm.totalQuestions - vm.totalQuestionsCorrect}}</h2>
+  <h3>Total Percent: <span [ngClass]="vm.hasGoodScore ? 'green' : 'red'">{{vm.percentCorrect | number:'1.0-0'}}%</span></h3>
 </div>
 <button type="button" class="btn btn-primary" (click)="restartQuiz()">Restart Quiz</button>
 

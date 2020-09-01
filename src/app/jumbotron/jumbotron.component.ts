@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionsService } from '../question/question.service';
 
 @Component({
   selector: 'app-jumbotron',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JumbotronComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly questionService: QuestionsService) { }
 
   ngOnInit() {
+  }
+
+  public startQuiz(): void {
+    this.questionService.toggleQuestions(true);
   }
 
 }

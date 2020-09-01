@@ -1,4 +1,4 @@
-<h1>{{question.question}}</h1>
+<h1 class="mt-3">{{question.question}}</h1>
 <ul>
   <li *ngFor="let options of question.options">
     <input id="{{options.option}}" [formControl]="control" value="{{options.option}}" type="radio" name="answer">

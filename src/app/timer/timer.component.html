@@ -1,0 +1,5 @@
+<div class="timer-container" *ngIf="timer$ | async as timer">
+  <span *ngIf="timer > 0">Timer: <span class="time font-weight-bold" [ngClass]="timer > 7 ? 'green' : 'red'"  >{{timer}}</span> seconds</span>
+</div>
+
+

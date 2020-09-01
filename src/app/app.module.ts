@@ -8,13 +8,17 @@ import { CommonModule } from '@angular/common';
 import { ResultsComponent } from './results/results.component';
 import { QuestionComponent } from './question/question.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
+import { TimerComponent } from './timer/timer.component';
+import { QuizComponent } from './quiz/quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ResultsComponent,
     QuestionComponent,
-    JumbotronComponent
+    JumbotronComponent,
+    TimerComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

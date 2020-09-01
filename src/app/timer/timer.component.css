@@ -1,0 +1,17 @@
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.timer-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.time {
+  font-size: 18px;
+}

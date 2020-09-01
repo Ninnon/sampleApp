@@ -19,16 +19,16 @@ export class ResultsComponent {
   );
   constructor(private readonly questionService: QuestionsService) { }
 
-  public getPercent(totalQuestionsCorrect: number, totalQuestions: number): number {
+  public restartQuiz(): void {
+    this.questionService.restartQuestions();
+  }
+
+  private getPercent(totalQuestionsCorrect: number, totalQuestions: number): number {
     return (100 * totalQuestionsCorrect) / totalQuestions;
   }
 
-  public hasGoodScore(totalQuestionsCorrect: number, totalQuestions: number): boolean {
+  private hasGoodScore(totalQuestionsCorrect: number, totalQuestions: number): boolean {
     return (100 * totalQuestionsCorrect) / totalQuestions > 69;
-  }
-
-  public restartQuiz(): void {
-    this.questionService.restartQuestions();
   }
 
 }

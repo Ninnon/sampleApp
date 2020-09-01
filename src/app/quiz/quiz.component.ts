@@ -83,7 +83,7 @@ export class QuizComponent implements OnDestroy {
     this.resultsService.showResults();
   }
 
-  public nextQuestion() {
+  private nextQuestion() {
     this.formControl.reset();
     this.questionService.goToNextQuestion();
     this.questionService.markQuestionAsUnanswered();

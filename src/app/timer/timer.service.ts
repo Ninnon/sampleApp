@@ -7,13 +7,13 @@ import { QuestionsService } from '../question/question.service';
   providedIn: 'root'
 })
 export class TimerService {
+  private countdownStart = 15;
   private startTimerSubject: Subject<void> = new Subject();
   public startTimer$: Observable<void> = this.startTimerSubject.asObservable();
   private stopTimerSubject: Subject<void> = new Subject();
   public stopTimer$: Observable<void> = this.stopTimerSubject.asObservable();
   private timerExpiredSubject: Subject<boolean> = new Subject();
   public timerExpired$: Observable<boolean> = this.timerExpiredSubject.asObservable();
-  public countdownStart = 15;
 
   public answerSubmitted$ = this.questionService.answerSubmitted$.pipe(
     filter(answerSubmitted => answerSubmitted),

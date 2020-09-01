@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, interval, BehaviorSubject, combineLatest } from 'rxjs';
 import { tap, takeWhile, map, takeUntil, filter, withLatestFrom, repeatWhen } from 'rxjs/operators';
 import { TimerService } from './timer.service';
-import { QuestionsService } from "../question/question.service";
+import { QuestionsService } from '../question/question.service';
 
 @Component({
   selector: 'app-timer',

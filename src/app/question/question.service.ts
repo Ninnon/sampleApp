@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ResultsService } from "../results/results.service";
-import { TimerService } from "../timer/timer.service";
+import { ResultsService } from '../results/results.service';
 
 export interface IQuestion {
   readonly id: number;
@@ -12,8 +11,8 @@ export interface IQuestion {
 }
 
 export interface IOption {
-  option: number;
-  text: string;
+  readonly option: number;
+  readonly text: string;
 }
 
 @Injectable({
@@ -34,7 +33,7 @@ export class QuestionsService {
 
   public showQuestions = false;
 
-  public questions$: Observable<IQuestion[]> = of([
+  public questions$: Observable<ReadonlyArray<IQuestion>> = of([
     {
       id: 1,
       question: 'What is Karl Malone\'s record for most points scored in a single game during the 1990s?',
